@@ -45,7 +45,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC" OR "x${CMAKE_CXX_SIMULATE_ID}" ST
   list(APPEND MATHPRESSO_PRIVATE_CFLAGS -GR-)       # [-] Runtime type information.
   list(APPEND MATHPRESSO_PRIVATE_CFLAGS_DBG -GS)    # [+] Buffer security-check.
   list(APPEND MATHPRESSO_PRIVATE_CFLAGS_REL -GS-)   # [-] Buffer security-check.
-  list(APPEND MATHPRESSO_PRIVATE_CFLAGS_REL -O2)    # [+] Favor speed over size.
+  list(APPEND MATHPRESSO_PRIVATE_CFLAGS_REL -O3)    # [+] Favor speed over size.
 endif()
 
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "^(GNU|Clang|AppleClang)$")

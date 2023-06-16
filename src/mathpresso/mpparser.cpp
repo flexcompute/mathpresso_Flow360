@@ -489,6 +489,7 @@ _Unary: {
       case kTokenMul         : op = kOpMul         ; goto _Binary;
       case kTokenDiv         : op = kOpDiv         ; goto _Binary;
       case kTokenMod         : op = kOpMod         ; goto _Binary;
+      case kTokenBitXor      : op = kOpPow         ; goto _Binary;
 _Binary: {
         AstBinaryOp* zNode = _ast->newNode<AstBinaryOp>(op);
         MATHPRESSO_NULLCHECK(zNode);
