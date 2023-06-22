@@ -253,10 +253,14 @@ _Repeat:
       }
     }
 
-    bool safe = digits <= kSafeDigits && significantDigits < 999999;
+    bool safe = significantDigits < 999999;
     int exponent = safe ? static_cast<int>(significantDigits) - static_cast<int>(digits) : 0;
-
+    if (safe) {
+      if (exponent != 0)
+        val = exponent < 0 ? val / mpPow10Table[-exponent] : val * mpPow10Table[exponent];
+    }
     // Parse an optional exponent.
+    exponent = 0;
     if (p != pEnd && mpGetLower(p[0]) == 'e') {
       if (++p == pEnd)
         goto _Invalid;
@@ -293,6 +297,7 @@ _Repeat:
       else
         safe = false;
     }
+
 
     // Error if there is an alpha-numeric character right next to the number.
     if (p != pEnd && mpCharClass[p[0]] <= kTokenCharSym)
